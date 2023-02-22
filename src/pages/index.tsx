@@ -1,11 +1,9 @@
-import Head from "next/head";
-import Image from "next/image";
+import type { NextPage } from "next";
+
+
 
 const Home: NextPage = () => {
-  
-return <div>HI</div>
-
-  
-}
+  return <div>HI</div>;
+};
 
 export default Home;
