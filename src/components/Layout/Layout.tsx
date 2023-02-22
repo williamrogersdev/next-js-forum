@@ -1,14 +1,15 @@
-import React from 'react';
-import Navbar from '../Navbar/Navbar';
+import React from "react";
+import Navbar from "../Navbar/Navbar";
 
+const Layout: React.FC = ({ children }) => {
+  // useAuth(); // will implement later at end of tutorial
 
-const Layout:React.FC = () => {
-    
-    return (
-        <>
-        <Navbar />
-        <main>{children}</main>
-        </>
-    )
-}
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+};
+
 export default Layout;
