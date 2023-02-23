@@ -28,7 +28,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
       <Modal isOpen={modalState.open} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>
+          <ModalHeader textAlign="center">
             {modalState.view === "login" && "Login"}
             {modalState.view === "signup" && "Sign Up"}
             {modalState.view === "resetPassword" && "Reset Password"}
@@ -39,9 +39,10 @@ const AuthModal: React.FC<AuthModalProps> = () => {
             flexDirection="colum"
             alignItems="center"
             justifyContent="center"
+            pb={6}
           >
 
-<Flex direction="colum" align="center" justify="center" width="70%" border="1px solid red">
+<Flex direction="colum" align="center" justify="center" width="70%">
 
 {/* <oAuthButtoms/> */}
 <AuthInputs/>
