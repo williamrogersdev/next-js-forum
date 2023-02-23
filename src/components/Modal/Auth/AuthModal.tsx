@@ -26,7 +26,11 @@ const AuthModal: React.FC<AuthModalProps> = () => {
       <Modal isOpen={modalState.open} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>
+            {modalState.view === "login"  && "Login"}
+            {modalState.view === "signup" && "Sign Up"}
+
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>HIIIIII</ModalBody>
         </ModalContent>
