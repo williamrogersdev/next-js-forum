@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { authModalState, ModalView } from "../../../atoms/authModalAtom";
 import InputItem from "../../Layout/InputItem";
 import { useSetRecoilState } from "recoil";
+import { auth } from "@/firebase/clientApp";
 
 
 const SignUp:React.FC = () => {
@@ -15,6 +16,13 @@ const SignUp:React.FC = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
 
   const onSubmit = () => {};
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
