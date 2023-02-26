@@ -23,6 +23,9 @@ const SignUp: React.FC = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (error){
+        setError("");
+    }
     if (SignUpForm.password !== SignUpForm.confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -99,7 +102,7 @@ const SignUp: React.FC = () => {
           {error}
         </Text>
       )}
-      <Button width="100%" height="36px" mt={2} mb={2} type="submit">
+      <Button width="100%" height="36px" mt={2} mb={2} type="submit" isLoading={loading}>
         Sign Up
       </Button>
 
