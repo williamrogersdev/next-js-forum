@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import AuthInputs from "./AuthInputs";
+import OAuthButtons from "./OAuthButtons";
 
 type AuthModalProps = {};
 
@@ -42,9 +43,9 @@ const AuthModal: React.FC<AuthModalProps> = () => {
             pb={6}
           >
 
-<Flex direction="colum" align="center" justify="center" width="70%">
+<Flex direction="column" align="center" justify="center" width="70%">
 
-{/* <oAuthButtoms/> */}
+<OAuthButtons/>
 <AuthInputs/>
 {/* <ResetPasswords/> */}
 </Flex>
