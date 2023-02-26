@@ -21,7 +21,8 @@ const SignUp: React.FC = () => {
 
   // firebase logig
 
-  const onSubmit = () => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (SignUpForm.password !== SignUpForm.confirmPassword) {
       setError("Passwords do not match");
       return;
