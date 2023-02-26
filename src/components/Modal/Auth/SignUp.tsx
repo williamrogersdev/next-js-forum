@@ -23,8 +23,8 @@ const SignUp: React.FC = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (error){
-        setError("");
+    if (error) {
+      setError("");
     }
     if (SignUpForm.password !== SignUpForm.confirmPassword) {
       setError("Passwords do not match");
@@ -97,12 +97,19 @@ const SignUp: React.FC = () => {
         bg="gray.50"
         onChange={onChange}
       />
-      {error && (
+      {error || userError && (
         <Text textAlign="center" color="red" fontSize={10}>
-          {error}
+          {error || userError.message}
         </Text>
       )}
-      <Button width="100%" height="36px" mt={2} mb={2} type="submit" isLoading={loading}>
+      <Button
+        width="100%"
+        height="36px"
+        mt={2}
+        mb={2}
+        type="submit"
+        isLoading={loading}
+      >
         Sign Up
       </Button>
 
