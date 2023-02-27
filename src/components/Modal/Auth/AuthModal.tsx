@@ -11,6 +11,7 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useRecoilState } from "recoil";
 import AuthInputs from "./AuthInputs";
 import OAuthButtons from "./OAuthButtons";
@@ -19,6 +20,9 @@ type AuthModalProps = {};
 
 const AuthModal: React.FC<AuthModalProps> = () => {
   const [modalState, setModalState] = useRecoilState(authModalState);
+
+const [user, loading, error] = useAuthState(auth)
+
   const handleClose = () =>
     setModalState((prev) => ({
       ...prev,
