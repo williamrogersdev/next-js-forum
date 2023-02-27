@@ -31,12 +31,9 @@ const [user, loading, error] = useAuthState(auth)
       open: false,
     }));
 
-useEffect(() => {
-  if (user) {
-    handleClose()
-  }
-
-}, [user])
+    useEffect(() => {
+      if (user) handleClose();
+    }, [user]);
 
   return (
     <>

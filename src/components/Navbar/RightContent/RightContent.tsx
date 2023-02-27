@@ -12,7 +12,7 @@ const RightContent: React.FC<RightContentProps> = () => {
     <>
      <AuthModal/>
       <Flex justifyContent="space-between" alignItems="center">
-        <AuthButtons/>
+        {user ?  <div>There is a user</div>: <AuthButtons/>)
       </Flex>
     </>
   );
