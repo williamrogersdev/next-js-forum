@@ -7,6 +7,7 @@ import {
   MenuList,
   Icon,
   Flex,
+  MenuDivider,
 } from "@chakra-ui/react";
 import { FaRedditSquare } from "react-icons/fa";
 import { User } from "firebase/auth";
@@ -14,7 +15,8 @@ import { VscAccount } from "react-icons/vsc";
 import { IoSparkles } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import React from "react";
-
+import{MdOutlineLogin } from "react-icons/md";
+ 
 type UserMenuProps = {
   user?: User | null;
 };
@@ -55,6 +57,18 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
           <Flex align="center">
             <Icon as={CgProfile} fontSize={20} mr={2} color="gray.300" />
             Profile
+          </Flex>
+        </MenuItem>
+
+        <MenuDivider />
+        <MenuItem
+          fontSize="10pt"
+          fontWeight={700}
+          _hover={{ bg: "blue.500", color: "white" }}
+        >
+          <Flex align="center">
+            <Icon as={MdOutlineLogin} fontSize={20} mr={2} color="gray.300" />
+            Log Out
           </Flex>
         </MenuItem>
       </MenuList>
