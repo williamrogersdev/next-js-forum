@@ -15,9 +15,9 @@ import { VscAccount } from "react-icons/vsc";
 import { IoSparkles } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import React from "react";
-import{MdOutlineLogin } from "react-icons/md";
+import { MdOutlineLogin } from "react-icons/md";
 import { auth } from "@/firebase/clientApp";
- 
+
 type UserMenuProps = {
   user?: User | null;
 };
@@ -31,9 +31,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
         border={4}
         _hover={{ outline: "1px solid", outlineColor: "gray.300" }}
       >
-        {user ? (
+        <Flex align="center">
           <Flex align="center">
-            <Flex align="center">
+            {user ? (
               <>
                 <Icon
                   fontSize={24}
@@ -42,12 +42,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
                   as={FaRedditSquare}
                 />
               </>
-              <ChevronDownIcon />
-            </Flex>
+            ) : (
+              <Icon as={VscAccount} fontSize={24} mr={1} />
+            )}
           </Flex>
-        ) : (
-          <Icon as={VscAccount} fontSize={24} mr={1}  />
-        )}
+          <ChevronDownIcon />
+        </Flex>
       </MenuButton>
       <MenuList>
         <MenuItem
