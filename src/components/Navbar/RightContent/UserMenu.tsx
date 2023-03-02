@@ -10,12 +10,13 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import { FaRedditSquare } from "react-icons/fa";
-import { User } from "firebase/auth";
+import { signOut, User } from "firebase/auth";
 import { VscAccount } from "react-icons/vsc";
 import { IoSparkles } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import React from "react";
 import{MdOutlineLogin } from "react-icons/md";
+import { auth } from "@/firebase/clientApp";
  
 type UserMenuProps = {
   user?: User | null;
@@ -65,6 +66,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
           fontSize="10pt"
           fontWeight={700}
           _hover={{ bg: "blue.500", color: "white" }}
+          onClick={() => signOut(auth)}
         >
           <Flex align="center">
             <Icon as={MdOutlineLogin} fontSize={20} mr={2} color="gray.300" />
