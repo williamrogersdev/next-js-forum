@@ -17,12 +17,16 @@ import { CgProfile } from "react-icons/cg";
 import React from "react";
 import { MdOutlineLogin } from "react-icons/md";
 import { auth } from "@/firebase/clientApp";
+import { useSetRecoilState } from "recoil";
+import { authModalState } from "@/atoms/authModalAtom";
 
 type UserMenuProps = {
   user?: User | null;
 };
 
 const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
+  const setAuthModalState = useSetRecoilState(authModalState);
+
   return (
     <Menu>
       <MenuButton
@@ -50,29 +54,57 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
         </Flex>
       </MenuButton>
       <MenuList>
-        <MenuItem
-          fontSize="10pt"
-          fontWeight={700}
-          _hover={{ bg: "blue.500", color: "white" }}
-        >
-          <Flex align="center">
-            <Icon as={CgProfile} fontSize={20} mr={2} color="gray.300" />
-            Profile
-          </Flex>
-        </MenuItem>
+        {user ? (
+          <>
+            <MenuItem
+              fontSize="10pt"
+              fontWeight={700}
+              _hover={{ bg: "blue.500", color: "white" }}
+            >
+              <Flex align="center">
+                <Icon as={CgProfile} fontSize={20} mr={2} color="gray.300" />
+                Profile
+              </Flex>
+            </MenuItem>
 
-        <MenuDivider />
-        <MenuItem
-          fontSize="10pt"
-          fontWeight={700}
-          _hover={{ bg: "blue.500", color: "white" }}
-          onClick={() => signOut(auth)}
-        >
-          <Flex align="center">
-            <Icon as={MdOutlineLogin} fontSize={20} mr={2} color="gray.300" />
-            Log Out
-          </Flex>
-        </MenuItem>
+            <MenuDivider />
+            <MenuItem
+              fontSize="10pt"
+              fontWeight={700}
+              _hover={{ bg: "blue.500", color: "white" }}
+              onClick={() => signOut(auth)}
+            >
+              <Flex align="center">
+                <Icon
+                  as={MdOutlineLogin}
+                  fontSize={20}
+                  mr={2}
+                  color="gray.300"
+                />
+                Log Out
+              </Flex>
+            </MenuItem>
+          </>
+        ) : (
+          <>
+            <MenuItem
+              fontSize="10pt"
+              fontWeight={700}
+              _hover={{ bg: "blue.500", color: "white" }}
+              onClick={() => setAuthModalState({ open: true, view: "login" })}
+            >
+              <Flex align="center">
+                <Icon
+                  as={MdOutlineLogin}
+                  fontSize={20}
+                  mr={2}
+                  color="gray.300"
+                />
+                Log In / Sign Up
+              </Flex>
+            </MenuItem>
+          </>
+        )}
       </MenuList>
     </Menu>
   );
