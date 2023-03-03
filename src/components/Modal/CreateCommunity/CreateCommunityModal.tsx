@@ -74,7 +74,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                 pl="22px"
                 onChange={handleChange}
               />
-              <Text>{charsRemaining} Characters Remaining</Text>
+              <Text color={charsRemaining === 0 ? 'red' : 'gray.500'}>{charsRemaining} Characters Remaining</Text>
             </ModalBody>
           </Box>
 
