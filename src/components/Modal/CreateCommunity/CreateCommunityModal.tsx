@@ -16,6 +16,7 @@ import {
   Text,
   Icon,
 } from "@chakra-ui/react";
+import { doc, getDoc } from "firebase/firestore";
 import React, { useState } from "react";
 
 import { BsFillEyeFill, BsFillPersonFill } from "react-icons/bs";
@@ -56,11 +57,21 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
     const format = /[ `!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     if (format.test(communityName) || communityName.length < 3) {
-      setError("Community name must be between 3 - 21 characters and only contain letters, numbers, and underscores");
-
+      setError(
+        "Community name must be between 3 - 21 characters and only contain letters, numbers, and underscores"
+      );
+      return;
     }
 
     //Create community document in firestore
+
+    //check name is not taken
+    
+    const communityDocRef = doc(firestore, "communities", communityName);
+    const communityDoc = await getDoc(communityDocRef);
+
+
+
   };
 
   return (
