@@ -3,6 +3,7 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
+  Flex,
   Input,
   Modal,
   ModalBody,
@@ -98,7 +99,10 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     isChecked={communityType === "public"}
                     onChange={onCommunityTypeChange}
                   >
-                    Public
+                    <Flex align='center'>
+                    <Text fontSize='10pt' mr={1}>Public</Text>
+                    <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Anyone can view and join</Text>
+                    </Flex>
                   </Checkbox>
                   <Checkbox
                     name="restricted"
