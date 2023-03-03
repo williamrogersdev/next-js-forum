@@ -19,7 +19,7 @@ import {
 import React, { useState } from "react";
 
 import { BsFillEyeFill, BsFillPersonFill } from "react-icons/bs";
-import { HiLockClosed} from "react-icons/hi";
+import { HiLockClosed } from "react-icons/hi";
 
 type CreateCommunityModalProps = {
   open: boolean;
@@ -103,35 +103,45 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     isChecked={communityType === "public"}
                     onChange={onCommunityTypeChange}
                   >
-                    <Flex align='center'>
-                        <Icon as={BsFillPersonFill} color="gray-500" mr={2}/>
-                    <Text fontSize='10pt' mr={1}>Public</Text>
-                    <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Anyone can view and join</Text>
+                    <Flex align="center">
+                      <Icon as={BsFillPersonFill} color="gray.500" mr={2} />
+                      <Text fontSize="10pt" mr={1}>
+                        Public
+                      </Text>
+                      <Text fontSize="8pt" color="gray.500" pt={1} ml={1}>
+                        Anyone can view and join
+                      </Text>
                     </Flex>
                   </Checkbox>
                   <Checkbox
                     name="restricted"
                     isChecked={communityType === "restricted"}
                     onChange={onCommunityTypeChange}
-                    
                   >
-                     <Flex align='center'>
-                     <Icon as={BsFillEyeFill} color="gray-500" mr={2}/>
+                    <Flex align="center">
+                      <Icon as={BsFillEyeFill} color="gray.500" mr={2} />
 
-                    <Text fontSize='10pt' mr={1}>Restricted</Text>
-                    <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Anyone can view but must be approved to post</Text>
+                      <Text fontSize="10pt" mr={1}>
+                        Restricted
+                      </Text>
+                      <Text fontSize="8pt" color="gray.500" pt={1} ml={1}>
+                        Anyone can view but must be approved to post
+                      </Text>
                     </Flex>
-                    
                   </Checkbox>
                   <Checkbox
                     name="private"
                     isChecked={communityType === "private"}
                     onChange={onCommunityTypeChange}
                   >
-                       <Flex align='center'>
-                          <Icon as={HiLockClosed} color="gray-500" mr={2}/>
-                    <Text fontSize='10pt' mr={1}>Private</Text>
-                    <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Only Approved Can Post</Text>
+                    <Flex align="center">
+                      <Icon as={HiLockClosed} color="gray.500" mr={2} />
+                      <Text fontSize="10pt" mr={1}>
+                        Private
+                      </Text>
+                      <Text fontSize="8pt" color="gray.500" pt={1} ml={1}>
+                        Only Approved Can Post
+                      </Text>
                     </Flex>
                   </Checkbox>
                 </Stack>
@@ -139,11 +149,16 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
             </ModalBody>
           </Box>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleClose}>
-              Close
+          <ModalFooter bg="gray.100" borderRadius="0px, 0px, 10px, 10px">
+            <Button
+              variant="outline"
+              height="30px"
+              mr={3}
+              onClick={handleClose}
+            >
+              Cancel
             </Button>
-            <Button variant="ghost">Create Community</Button>
+            <Button height="30px" onClick={() => {}}>Create Community</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
