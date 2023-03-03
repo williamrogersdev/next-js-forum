@@ -16,12 +16,15 @@ import {
   Text,
   Icon,
 } from "@chakra-ui/react";
-import { doc, getDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { BsFillEyeFill, BsFillPersonFill } from "react-icons/bs";
 import { HiLockClosed } from "react-icons/hi";
+import { firestore, auth } from "../../../firebase/clientApp";
+
+
 
 type CreateCommunityModalProps = {
   open: boolean;
@@ -55,6 +58,8 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
   };
 
   const handleCreateCommunity = async () => {
+
+    if (error) setError("");
     //validate commnuty name
 
     const format = /[ `!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?~]/;
@@ -216,7 +221,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
             >
               Cancel
             </Button>
-            <Button height="30px" onClick={() => {}}>
+            <Button height="30px" onClick={handleCreateCommunity} isLoading={loading}>
               Create Community
             </Button>
           </ModalFooter>
