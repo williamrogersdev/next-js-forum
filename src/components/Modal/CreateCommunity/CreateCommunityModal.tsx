@@ -96,12 +96,14 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                   <Checkbox
                     name="public"
                     isChecked={communityType === "public"}
+                    onChange={onCommunityTypeChange}
                   >
                     Public
                   </Checkbox>
                   <Checkbox
                     name="restricted"
                     isChecked={communityType === "restricted"}
+                    onChange={onCommunityTypeChange}
                     
                   >
                     Restricted
@@ -109,6 +111,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                   <Checkbox
                     name="private"
                     isChecked={communityType === "private"}
+                    onChange={onCommunityTypeChange}
                   >
                     Private
                   </Checkbox>
