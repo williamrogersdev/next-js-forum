@@ -110,14 +110,21 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     onChange={onCommunityTypeChange}
                     
                   >
-                    Restricted
+                     <Flex align='center'>
+                    <Text fontSize='10pt' mr={1}>Restricted</Text>
+                    <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Anyone can view but must be approved to post</Text>
+                    </Flex>
+                    
                   </Checkbox>
                   <Checkbox
                     name="private"
                     isChecked={communityType === "private"}
                     onChange={onCommunityTypeChange}
                   >
-                    Private
+                       <Flex align='center'>
+                    <Text fontSize='10pt' mr={1}>Private</Text>
+                    <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Only Approved Can Post</Text>
+                    </Flex>
                   </Checkbox>
                 </Stack>
               </Box>
