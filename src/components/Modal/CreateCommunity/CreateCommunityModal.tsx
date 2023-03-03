@@ -22,8 +22,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
   open,
   handleClose,
 }) => {
-
-const [communityName, setCommunityName] = useState("");
+  const [communityName, setCommunityName] = useState("");
 
   return (
     <>
@@ -40,22 +39,21 @@ const [communityName, setCommunityName] = useState("");
           </ModalHeader>
           <Box pl={3} pr={3}>
             <ModalCloseButton />
-            <ModalBody
-              display="flex"
-              flexDirection="column"
-              padding="10px 0px"
-              border="1px solid red"
-            >
+            <ModalBody display="flex" flexDirection="column" padding="10px 0px">
               <Text fontWeight={600} fontSize={15}>
                 Community Name
               </Text>
               <Text fontSize={11} color="gray.500">
                 Community Names Cannot Be Changed
               </Text>
-              <Text>
-                r/
-              </Text>
-              <Input />
+              <Text position="relative" top="28px" left="10px" width="20px" color="gray.400">r/</Text>
+              <Input
+              position='relative'
+                value={communityName}
+                size="sm"
+                pl="22px"
+                onChange={() => {}}
+              />
             </ModalBody>
           </Box>
 
