@@ -10,7 +10,7 @@ const Communities: React.FC<CommunitiesProps> = () => {
   return (
 
     <>
-    <CreateCommunityModal open={open} />
+    <CreateCommunityModal open={open} handleClose={() => setOpen(false)} />
     <MenuItem width="100%" fontSize="10pt" _hover={{bg: "gray.100"}} onClick={() => setOpen(true)}>
 
     <Flex align="center">
