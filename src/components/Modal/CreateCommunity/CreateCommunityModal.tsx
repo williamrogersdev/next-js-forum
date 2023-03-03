@@ -8,21 +8,22 @@ type CreateCommunityModalProps = {
 
 const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
   open,
+    handleClose,
 }) => {
     return (
         <>
           
-          <Modal isOpen={open} onClose={onClose}>
+          <Modal isOpen={open} onClose={handleClose}>
             <ModalOverlay    />
             <ModalContent>
               <ModalHeader>Modal Title</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <Lorem count={2} />
+                MODAl BODY
               </ModalBody>
     
               <ModalFooter>
-                <Button colorScheme='blue' mr={3} onClick={onClose}>
+                <Button colorScheme='blue' mr={3} onClick={handleClose}>
                   Close
                 </Button>
                 <Button variant='ghost'>Secondary Action</Button>
