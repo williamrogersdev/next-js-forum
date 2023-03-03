@@ -16,8 +16,9 @@ import {
   Text,
   Icon,
 } from "@chakra-ui/react";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, serverTimestamp } from "firebase/firestore";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import { BsFillEyeFill, BsFillPersonFill } from "react-icons/bs";
 import { HiLockClosed } from "react-icons/hi";
@@ -31,6 +32,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
   open,
   handleClose,
 }) => {
+  const [user] = useAuthState(auth);
   const [communityName, setCommunityName] = useState("");
   const [charsRemaining, setCharsRemaining] = useState(21);
   const [communityType, setCommunityType] = useState("public");
@@ -66,12 +68,27 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
     //Create community document in firestore
 
     //check name is not taken
-    
+
     const communityDocRef = doc(firestore, "communities", communityName);
     const communityDoc = await getDoc(communityDocRef);
 
+    if (communityDoc.exists()) {
+      setError("Community name is already taken");
+      return;
+    }
 
+    //create community document
 
+    await setDoc(communityDocRef, {
+      //creator id
+      //timestamp
+      //number of members
+      //community type
+      creatorId: user?.uid,
+      createdAt: serverTimestamp(),
+      numberOfMembers: 1,
+      privacyType: communityType,
+    });
   };
 
   return (
