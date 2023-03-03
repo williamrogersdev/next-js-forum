@@ -30,8 +30,7 @@ const Directory: React.FC<UserMenuProps> = () => {
         </Flex>
       </MenuButton>
       <MenuList>
-        <Communities />
-        Community 
+        <Communities /> 
       </MenuList>
     </Menu>
   );

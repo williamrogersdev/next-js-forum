@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 
 type CreateCommunityModalProps = {
-    
+  open: boolean;
 };
 
-const CreateCommunityModal:React.FC<CreateCommunityModalProps> = () => {
-    
-    return <div>Have a good coding</div>
-}
+const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
+  open,
+}) => {
+  return <div>Com Modal</div>;
+};
 export default CreateCommunityModal;
