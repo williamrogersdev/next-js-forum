@@ -1,6 +1,8 @@
 import {
   Box,
   Button,
+  Checkbox,
+  CheckboxGroup,
   Input,
   Modal,
   ModalBody,
@@ -9,6 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Stack,
   Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -24,17 +27,21 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
 }) => {
   const [communityName, setCommunityName] = useState("");
   const [charsRemaining, setCharsRemaining] = useState(21);
+  const [communityType, setCommunityType] = useState("public");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
     if (event.target.value.length > 21) return;
 
     setCommunityName(event.target.value);
     //recalculate chars remaining
 
     setCharsRemaining(21 - event.target.value.length);
+  };
 
-
+  const onCommunityTypeChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setCommunityType(event.target.name);
   };
   return (
     <>
@@ -74,7 +81,39 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                 pl="22px"
                 onChange={handleChange}
               />
-              <Text color={charsRemaining === 0 ? 'red' : 'gray.500'}>{charsRemaining} Characters Remaining</Text>
+              <Text
+                fontSize="9pt"
+                color={charsRemaining === 0 ? "red" : "gray.500"}
+              >
+                {charsRemaining} Characters Remaining
+              </Text>
+              <Box mt={4} mb={4}>
+                <Text fontWeight={600} fontSize={15}>
+                  Community Type
+                </Text>
+                {/* {checkbox} */}
+                <Stack spacing={2}>
+                  <Checkbox
+                    name="public"
+                    isChecked={communityType === "public"}
+                  >
+                    Public
+                  </Checkbox>
+                  <Checkbox
+                    name="restricted"
+                    isChecked={communityType === "restricted"}
+                    
+                  >
+                    Restricted
+                  </Checkbox>
+                  <Checkbox
+                    name="private"
+                    isChecked={communityType === "private"}
+                  >
+                    Private
+                  </Checkbox>
+                </Stack>
+              </Box>
             </ModalBody>
           </Box>
 
