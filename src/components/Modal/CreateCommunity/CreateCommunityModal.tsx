@@ -37,6 +37,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
   const [charsRemaining, setCharsRemaining] = useState(21);
   const [communityType, setCommunityType] = useState("public");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length > 21) return;
@@ -65,30 +66,41 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
       return;
     }
 
-    //Create community document in firestore
+    setLoading(true);
 
-    //check name is not taken
-
-    const communityDocRef = doc(firestore, "communities", communityName);
-    const communityDoc = await getDoc(communityDocRef);
-
-    if (communityDoc.exists()) {
-      setError("Community name is already taken");
-      return;
+    try {
+      
+      
+          //Create community document in firestore
+      
+          //check name is not taken
+      
+          const communityDocRef = doc(firestore, "communities", communityName);
+          const communityDoc = await getDoc(communityDocRef);
+      
+          if (communityDoc.exists()) {
+            throw new Error("Community name is already taken");
+          }
+      
+          //create community document
+      
+          await setDoc(communityDocRef, {
+            //creator id
+            //timestamp
+            //number of members
+            //community type
+            creatorId: user?.uid,
+            createdAt: serverTimestamp(),
+            numberOfMembers: 1,
+            privacyType: communityType,
+          });
+    } catch (error: any) {
+      console.log("handleCreateCommunity Error", error);
+      setError(error.message);
+      
     }
 
-    //create community document
-
-    await setDoc(communityDocRef, {
-      //creator id
-      //timestamp
-      //number of members
-      //community type
-      creatorId: user?.uid,
-      createdAt: serverTimestamp(),
-      numberOfMembers: 1,
-      privacyType: communityType,
-    });
+    setLoading(false);
   };
 
   return (
