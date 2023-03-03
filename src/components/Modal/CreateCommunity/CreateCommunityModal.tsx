@@ -14,8 +14,12 @@ import {
   ModalOverlay,
   Stack,
   Text,
+  Icon,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+
+import { BsFillEyeFill, BsFillPersonFill } from "react-icons/bs";
+import { HiLockClosed} from "react-icons/hi";
 
 type CreateCommunityModalProps = {
   open: boolean;
@@ -46,7 +50,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
   };
   return (
     <>
-      <Modal isOpen={open} onClose={handleClose}>
+      <Modal isOpen={open} onClose={handleClose} size="lg">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader
@@ -100,6 +104,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     onChange={onCommunityTypeChange}
                   >
                     <Flex align='center'>
+                        <Icon as={BsFillPersonFill} color="gray-500" mr={2}/>
                     <Text fontSize='10pt' mr={1}>Public</Text>
                     <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Anyone can view and join</Text>
                     </Flex>
@@ -111,6 +116,8 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     
                   >
                      <Flex align='center'>
+                     <Icon as={BsFillEyeFill} color="gray-500" mr={2}/>
+
                     <Text fontSize='10pt' mr={1}>Restricted</Text>
                     <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Anyone can view but must be approved to post</Text>
                     </Flex>
@@ -122,6 +129,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({
                     onChange={onCommunityTypeChange}
                   >
                        <Flex align='center'>
+                          <Icon as={HiLockClosed} color="gray-500" mr={2}/>
                     <Text fontSize='10pt' mr={1}>Private</Text>
                     <Text fontSize='8pt' color='gray.500' pt={1} ml={1}>Only Approved Can Post</Text>
                     </Flex>
